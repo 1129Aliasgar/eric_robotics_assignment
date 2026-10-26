@@ -1,0 +1,14 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+apps/web/public/media
+apps/web/public/map
+docs/demo.gif
+docs/demo.mp4
+docs/screenshots
+FSD Assignment #1.md
+help.md
+assets/GIf.gif
+package-lock.json

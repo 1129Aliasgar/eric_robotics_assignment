@@ -1,0 +1,46 @@
+{
+  "name": "eric-insight-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Insight.IO mission control dashboard for ERIC Robotics",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm run dev -w @insight/server\" \"npm run dev -w @insight/web\"",
+    "dev:web": "npm run dev -w @insight/web",
+    "dev:api": "npm run dev -w @insight/server",
+    "build": "npm run build -w @insight/web && npm run build -w @insight/server",
+    "start": "node apps/server/dist/server.js",
+    "lint": "eslint .",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:ui": "npm run build && playwright test --ui",
+    "capture:media": "npm run build && node scripts/capture-media.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "generate:pcd": "tsx scripts/generate-pcd.ts",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "concurrently": "10.0.6",
+    "eslint": "10.13.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
+    "globals": "17.13.0",
+    "jsdom": "29.0.0",
+    "prettier": "3.9.10",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.0"
+  }
+}
